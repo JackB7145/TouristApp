@@ -4,3 +4,4 @@ This repository is an example of the implementation of the REST countries API an
 
 
 ![App1](https://github.com/JackB7145/TouristApp/assets/99556867/c046d942-a3df-4abe-8d8c-1faa7756e68f)
+![App2](https://github.com/JackB7145/TouristApp/assets/99556867/f3cc25f0-67db-4f62-932b-b7a59a53fad6)
