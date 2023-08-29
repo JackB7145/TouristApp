@@ -1,3 +1,4 @@
+#Initializing required libraries
 from PyQt5 import QtCore, QtGui, QtWidgets
 from textToImage import getCountryImage
 from translator import translate
@@ -8,9 +9,10 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 from PyQt5.QtGui import QImage, QPixmap
 import time
 
-last = time.time() - 3
+
+#Initializing the GUI window
 class Ui_MainWindow(object):
-    last = time.time()
+    last = time.time()-3
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
@@ -441,10 +443,13 @@ class Ui_MainWindow(object):
         self.plainTextEdit_2.setPlaceholderText(_translate("MainWindow", "Once the language is selected the newly translated text will appear here"))
         self.label_15.setText(_translate("MainWindow", "Name: "))
 
+    #Getting and displaying the geogrpahical data
     def geoInfo(self):
         try:    
+                #Defining variables
                 global last
-                print(time.time() - last)
+
+                #Determining if the button has been pressed to quckly
                 if time.time() - last > 3:
                         name, capital, currency, region, subregion, lang = countryData(self.lineEdit.text())
                         _translate = QtCore.QCoreApplication.translate
@@ -455,6 +460,7 @@ class Ui_MainWindow(object):
                         self.label_19.setText(_translate("MainWindow", subregion))
                         self.label_20.setText(_translate("MainWindow", lang))
                         
+                        #Requesting the data
                         url = getCountryImage(self.lineEdit.text())
                         image = QImage()
                         image.loadFromData(requests.get(url).content) 
@@ -467,8 +473,10 @@ class Ui_MainWindow(object):
         except:
              pass
 
+    #Translating text
     def translated(self):
         try:
+                #Translating the data and displaying it
                 _translate = QtCore.QCoreApplication.translate
                 result = translate(self.plainTextEdit.toPlainText(), self.lineEdit_2.text())
                 self.plainTextEdit_2.clear()
@@ -476,7 +484,7 @@ class Ui_MainWindow(object):
         except:
              pass
 
-
+#Luanching and Displaying the application
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -485,4 +493,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-

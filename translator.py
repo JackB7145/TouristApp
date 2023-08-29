@@ -11,6 +11,7 @@ def translate(statement, desiredLang):
         lang[line[0]] = line[1] 
         line = languages.readline().rstrip("\n").split()
 
+    #Translating the data
     try:
         translator = EasyGoogleTranslate(
             source_language='',
@@ -19,6 +20,7 @@ def translate(statement, desiredLang):
         result = translator.translate(statement)
         return result
 
+    #If the user enteres an invalid country
     except:
 
         print("There is no language by that name, ensure that you entered language is correct")
