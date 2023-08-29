@@ -3,7 +3,7 @@ import os
 import openai
 
 #Initializing the api key
-key = "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"
+key = ""
 
 #Initializing the main function
 def getCountryImage(country):
