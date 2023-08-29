@@ -9,10 +9,12 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 from PyQt5.QtGui import QImage, QPixmap
 import time
 
+#Defining neccesary variables
+last = 0
 
 #Initializing the GUI window
 class Ui_MainWindow(object):
-    last = time.time()-3
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
@@ -448,9 +450,10 @@ class Ui_MainWindow(object):
         try:    
                 #Defining variables
                 global last
-
+        
                 #Determining if the button has been pressed to quckly
-                if time.time() - last > 3:
+                if time.time() - last > 3 or last == 0:
+                        last = time.time()
                         name, capital, currency, region, subregion, lang = countryData(self.lineEdit.text())
                         _translate = QtCore.QCoreApplication.translate
                         self.label_14.setText(_translate("MainWindow", name))
@@ -461,11 +464,12 @@ class Ui_MainWindow(object):
                         self.label_20.setText(_translate("MainWindow", lang))
                         
                         #Requesting the data
+ 
                         url = getCountryImage(self.lineEdit.text())
+                       
                         image = QImage()
                         image.loadFromData(requests.get(url).content) 
                         self.label_3.setPixmap(QPixmap(image))
-                        last = time.time()
                 else:
                      print("Cooldown iminent")
                 
