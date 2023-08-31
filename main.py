@@ -8,10 +8,14 @@ import requests
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 from PyQt5.QtGui import QImage, QPixmap
 import time
+import os
 
 #Defining neccesary variables
 last = 0
+path = os.path.dirname(__file__)
+filepath = path+r"\images\sunset.jpg"
 
+print(filepath)
 #Initializing the GUI window
 class Ui_MainWindow(object):
 
@@ -179,7 +183,7 @@ class Ui_MainWindow(object):
         self.label_3.setGeometry(QtCore.QRect(0, 130, 621, 261))
         self.label_3.setStyleSheet("")
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("images/sunset.jpg"))
+        self.label_3.setPixmap(QtGui.QPixmap(filepath))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.gridLayoutWidget_12 = QtWidgets.QWidget(self.centralwidget)
