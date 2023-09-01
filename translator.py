@@ -1,10 +1,12 @@
-#Can translate over 138 languages
+#Importing necessary libraries
+import os
 from easygoogletranslate import EasyGoogleTranslate
 
+path = path = os.path.dirname(__file__)
 def translate(statement, desiredLang):
 
     #Reading in the languages text file
-    languages = open("lang.txt", "r")
+    languages = open(path+r"/lang.txt", "r")
     line = languages.readline().rstrip("\n").split()
     lang = {}
     while line != []: 
@@ -24,7 +26,4 @@ def translate(statement, desiredLang):
     except:
 
         print("There is no language by that name, ensure that you entered language is correct")
-
-
-        
 
